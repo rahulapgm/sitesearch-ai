@@ -9,10 +9,12 @@ export class AnalyzeService {
       const aiWorkerDir = path.resolve(process.cwd(), '../ai-worker');
       const workerPath = path.resolve(aiWorkerDir, 'main.py');
 
-      const pythonPath = path.resolve(
-        process.cwd(),
-        '../ai-worker/venv/bin/python',
-      );
+      // const pythonPath = path.resolve(
+      //   process.cwd(),
+      //   '../ai-worker/venv/bin/python',
+      // );
+
+      const pythonPath = process.env.PYTHON_PATH || 'python3';
 
       const python = spawn(pythonPath, [workerPath, url, query], {
         cwd: aiWorkerDir,

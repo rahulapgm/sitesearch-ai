@@ -1,2 +1,3 @@
 /apps/ai-worker/venv
 /apps/ai-worker/.env
+/apps/api/.env.local
