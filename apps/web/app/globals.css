@@ -1,8 +1,37 @@
 @import "tailwindcss";
+@source "../node_modules/@rahulapgm/skyblue-ui/dist";
 
 :root {
+  color-scheme: light;
   --background: #ffffff;
   --foreground: #171717;
+  --surface-card: #ffffff;
+  --color-bg-dark: #111827;
+  --color-fg-inverse: #ffffff;
+  --color-surface-muted: #f3f7fb;
+  --color-surface-hover: #eef6fc;
+  --color-brand-primary: #0284c7;
+  --color-brand-primary-hover: #0369a1;
+  --color-brand-primary-active: #075985;
+  --color-brand-primary-light: #e0f2fe;
+  --color-brand-secondary: #0f172a;
+  --color-brand-secondary-light: #1e293b;
+  --color-status-error: #dc2626;
+  --color-status-error-light: #fee2e2;
+  --color-status-info: #2563eb;
+  --color-status-info-light: #dbeafe;
+  --color-status-success: #16a34a;
+  --color-status-success-light: #dcfce7;
+  --color-status-warning: #d97706;
+  --color-status-warning-light: #fef3c7;
+  --color-line-strong: #94a3b8;
+  --line-soft: #dbe4ee;
+  --ink-muted: #475569;
+  --ink-subtle: #64748b;
+  --shadow-sm: 0 1px 2px rgb(15 23 42 / 0.06);
+  --shadow-md: 0 12px 28px rgb(15 23 42 / 0.08);
+  --shadow-lg: 0 22px 44px rgb(15 23 42 / 0.12);
+  --shadow-primary: 0 14px 30px rgb(2 132 199 / 0.22);
 }
 
 @theme inline {
@@ -12,15 +41,78 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.gutter-page {
+  padding-inline: clamp(1rem, 3vw, 2rem);
+}
+
+.gutter-card-sm {
+  padding: 1rem;
+}
+
+.gutter-card-md {
+  padding: 1.25rem;
+}
+
+.gutter-card-lg {
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.gutter-card-xl {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.gutter-grid-xs {
+  gap: 0.5rem;
+}
+
+.gutter-grid-sm {
+  gap: 0.75rem;
+}
+
+.gutter-grid-md {
+  gap: 1rem;
+}
+
+.gutter-grid-lg {
+  gap: 1.5rem;
+}
+
+.gutter-grid-xl {
+  gap: 2rem;
+}
+
+.type-overline {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1rem;
+  text-transform: uppercase;
+}
+
+.type-heading {
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.75rem;
+}
+
+.type-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.4rem;
+}
+
+.type-body {
+  font-size: 1rem;
+  line-height: 1.6rem;
+}
+
+.type-caption {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
