@@ -20,3 +20,17 @@ def store_documents(chunks):
         table_name="documents",
         query_name="match_documents",
     )
+
+def has_documents_for_url(url: str) -> bool:
+    supabase_client = get_supabase_client()
+
+    response = (
+        supabase_client
+        .from_("documents")
+        .select("id")
+        .contains("metadata", {"source_url": url})
+        .limit(1)
+        .execute()
+    )
+
+    return len(response.data) > 0

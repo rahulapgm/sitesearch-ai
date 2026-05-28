@@ -4,15 +4,13 @@ import sys
 
 def split_documents(docs):
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=2000,
+        chunk_size=3000,
         chunk_overlap=100,
     )
 
     chunks = splitter.split_documents(docs)
 
-    print(f"Chunks created: {len(chunks)}", file=sys.stderr)
-
-    return chunks[:20]
+    return chunks[:12]
 
 
 def add_source_metadata(chunks, url: str):
