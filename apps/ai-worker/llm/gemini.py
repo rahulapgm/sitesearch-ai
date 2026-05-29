@@ -12,6 +12,22 @@ def get_llm():
     )
 
 
+def normalize_llm_content(content):
+    if isinstance(content, str):
+        return content
+
+    if isinstance(content, list):
+        text_parts = []
+
+        for item in content:
+            if isinstance(item, dict) and item.get("type") == "text":
+                text_parts.append(item.get("text", ""))
+
+        return "\n".join(text_parts).strip()
+
+    return str(content)
+
+
 def generate_answer(context: str, query: str):
     llm = get_llm()
 
@@ -38,4 +54,4 @@ def generate_answer(context: str, query: str):
         "query": query,
     })
 
-    return response.content
+    return normalize_llm_content(response.content)
