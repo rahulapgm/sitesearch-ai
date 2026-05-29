@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { spawn } from 'child_process';
+import { existsSync } from 'fs';
 import * as path from 'path';
 
 @Injectable()
@@ -9,12 +10,10 @@ export class AnalyzeService {
       const aiWorkerDir = path.resolve(process.cwd(), '../ai-worker');
       const workerPath = path.resolve(aiWorkerDir, 'main.py');
 
-      // const pythonPath = path.resolve(
-      //   process.cwd(),
-      //   '../ai-worker/venv/bin/python',
-      // );
-
-      const pythonPath = process.env.PYTHON_PATH || 'python3';
+      const venvPythonPath = path.resolve(aiWorkerDir, 'venv/bin/python');
+      const pythonPath =
+        process.env.PYTHON_PATH ||
+        (existsSync(venvPythonPath) ? venvPythonPath : 'python3');
 
       const python = spawn(pythonPath, [workerPath, url, query], {
         cwd: aiWorkerDir,
@@ -29,6 +28,10 @@ export class AnalyzeService {
 
       python.stderr.on('data', (data: Buffer) => {
         error += data.toString();
+      });
+
+      python.on('error', (err) => {
+        reject(err);
       });
 
       python.on('close', (code) => {

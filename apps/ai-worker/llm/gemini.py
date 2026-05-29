@@ -1,12 +1,12 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 
-from config.settings import GOOGLE_API_KEY
+from config.settings import GEMINI_MODEL, GOOGLE_API_KEY
 
 
 def get_llm():
     return ChatGoogleGenerativeAI(
-        model="gemini-2.5-flash",
+        model=GEMINI_MODEL,
         google_api_key=GOOGLE_API_KEY,
         temperature=0.4,
     )
